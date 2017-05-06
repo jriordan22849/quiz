@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^login/',accounts.views.loginUser, name ="login"),
     url(r'^logout/',accounts.views.logoutUser, name ="logout"),
     url(r'^quiz/',quiz.views.viewqs, name ="viewqs"),
+    url(r'^picked/(?P<quixID>[0-9]+)/$',quiz.views.picked, name ="picked"),
 ]

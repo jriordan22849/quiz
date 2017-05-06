@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
+from quiz.models import Quiz
 
 
 # Create your views here.
@@ -14,7 +15,10 @@ def loginUser(request):
 
 		if user is not None:
 			login(request, user)
-			return render(request,'quiz/homepage.html',{'success': 'User Logged in.'})
+			print("Home Page")
+			quiz = Quiz.objects.all()
+			print quiz
+			return render(request,'quiz/homepage.html',{'quiz': quiz})
 		else: 
 			return render(request,'accounts/login.html', {'error': 'Username and Password doesnt exist.'})
 	else:
@@ -40,7 +44,10 @@ def signup(request):
 			except User.DoesNotExist:			
 				user = User.objects.create_user(request.POST['username'],password = request.POST['password1'])
 				login(request,user)
-				return render(request,'accounts/signup.html')
+				quiz = Quiz.objects.all()
+				print quiz
+				return render(request,'quiz/homepage.html',{'quiz': quiz})
+
 		else:
 			return render(request,'accounts/signup.html', {'error': 'Passowrd didnt match'})
 	else:

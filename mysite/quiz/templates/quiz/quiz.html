@@ -11,7 +11,7 @@
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<title>Sign Up</title>
+		<title>Quiz: {{ quiz.name }}</title>
 
 
 	</head>
@@ -41,29 +41,55 @@
 	<body data-spy="scroll" data-target="#navbar-example" style = "background-color: #FCFAF9">
 	<div class="container-fluid">
 		<div class="jumbotron" style = "background-color: #65AFFF">
-		 <h1 class = "text-center">Take a Quiz</h1>
+		 <h1 class = "text-center">Quiz: {{ quiz.name }}</h1>
+	</div>
+	
+	<div class="container-fluid">
+		<div id = "questionArea">
+			
+	<form class="navbar navbar-defaul form-control"  id="form" style = "background-color: #FCFAF9" >
+		{% csrf_token %}
+		<div class="row">
+		<div class="col-md-3 col-md-offset-4">
+		<div id = "questionArea">
+		
+		 {% for question in questions.all %}
+		
+			<br>
+			<h3>{{ question.questionNumber }}. {{ question.questionText }}</h3>
+			
+			<form>
+			 {% for option in options.all %}
+			
+				{% if option.option == question %}
+					
+					<br>
+					<ul class = "text-left">
+					<input type="radio"  name = {{ question.questionNumber }} value={{ option.optionText }}> {{ option.optionText }}
+					</ul>
+				
+				{% endif %}
+			
+			 {% endfor %}
+			</form> 
+		
+		 {% endfor %}
+
+		</div>
+
+		<br>
+		<div id = "buttonArea">
+			 <input type="button" id="more_fields"  onclick = "completeButton()" value="Finish" class="btn btn-primary btn-lg"></input>
+		</div>
+		</div>
+	</form>
+	</div>
+			
+		</div>
+		
+	
 	</div>
 
-	 <div id = "tableResults">
-				<table style = "background-color: #FFFFFF" class ="table" border='2' name ="survey_table" id = "survey_table">
-				  <tr>
-			 		<th>Quiz Name</th>
-					<th>Date Created </th>
-					<th></th>
-			 	</tr>
-				 {% for qz in quiz.all %}
-					<tr>
-						<td>{{ qz.name }}</td>
-						<td>{{ qz.created }}</td>
-						
-						<td> 
-							<a href="{% url 'picked' qz.quixID %}">
-							<button class="btn btn-default btn-lg"><span class ="glyphicon glyphicon-stats"></span></button></a>
-							</a>
-						</td>
-					</tr>
-					{% endfor %}					 
-			</table>  
-	</div>	
+	<script src="{% static 'js/app.js' %}"></script>
 	</body>
 </html>

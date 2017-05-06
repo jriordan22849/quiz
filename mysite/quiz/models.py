@@ -14,6 +14,8 @@ class Quiz(models.Model):
 		blank=False,
 		verbose_name="name"
 	)
+	
+	quixID = models.IntegerField( unique = '1')
 	created = models.DateTimeField(
 		auto_now_add=True
 	)
