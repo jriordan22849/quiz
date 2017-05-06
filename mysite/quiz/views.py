@@ -51,7 +51,7 @@ def completed(request):
 			score += compareAnswer(quiz,index,ans)
 			index = index + 1
 		
-	return HttpResponse(score)
+	return render(request,'quiz/results.html', {'quiz':quiz, 'score':score, 'numOfQuestions':numOfQuestions})	
 
 
 def compareAnswer(quiz, index, ans):

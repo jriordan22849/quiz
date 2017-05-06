@@ -11,7 +11,7 @@
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<title>Quiz: {{ quiz.name }}</title>
+		<title>Result</title>
 
 
 	</head>
@@ -41,60 +41,23 @@
 	<body data-spy="scroll" data-target="#navbar-example" style = "background-color: #FCFAF9">
 	<div class="container-fluid">
 		<div class="jumbotron" style = "background-color: #65AFFF">
-		 <h1 class = "text-center" >Quiz: {{ quiz.name }}</h1>
-	</div>
-	
-	<div class="container-fluid">
-		<div id = "questionArea">
-			
-	<form class="navbar navbar-defaul form-control"  action ="{% url 'completed' %}" method="post"  id="form" style = "background-color: #FCFAF9" >
+		 <h1 class = "text-center">Result of Quiz: {{ quiz.name }}</h1>
+		</div>
+
+
 		{% csrf_token %}
-		<div class="row">
-		<div id = "questionArea">
-		<input type="hidden" class="form-control" name="name_of_quiz" value={{ quiz.quixID }} placeholder ="Question_questions'" id = "name_of_quiz"/>
-		<input type="hidden" class="form-control" name="numOfqs" value={{ quiz.numberOfQuestions }} placeholder ="numOfqs'" id = "numOfqs"/>
+		<div class="text-center col-md-4 col-md-offset-4" style = "background: white">
+	    
+		{% if error %}
+			{{ error }}
+		{% endif %}
 		
+		<h2>Score : {{ score }} out of {{ numOfQuestions }}</h2>
 		
-		 {% for question in questions.all %}
-		
-		<div style = "background: white" class="mx-auto">
-		
-			<br>
-			<h3>{{ question.questionNumber }}. {{ question.questionText }}</h3>
-			
-			 {% for option in options.all %}
-			
-				{% if option.option == question %}
-					
-					<br>
-					<ul class = "text-left">
-					<input type="radio"  name = {{ question.questionNumber }} value={{ option.optionText }}> {{ option.optionText }}
-					</ul>
-	
-					
-					
-				
-				{% endif %}
-			
-			 {% endfor %}
-		</div>
-		 {% endfor %}
-
+		<a href = "{% url 'viewqs' %}" >
+		<input type="button"  onClick = "{% url 'viewqs' %}" value = "Take another Quiz" class="btn btn-lg btn-success btn-primary btn-block">
+		</a>
 		</div>
 
-		<br>
-		<div id = "buttonArea">
-			<button type="submit" class="btn btn-default btn-lg btn-success">Submit</button>
-		</div>
-		</div>
-	</form>
-	</div>
-			
-		</div>
-		
-	
-	</div>
-
-	<script src="{% static 'js/app.js' %}"></script>
 	</body>
 </html>
