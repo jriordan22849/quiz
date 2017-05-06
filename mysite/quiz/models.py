@@ -16,6 +16,7 @@ class Quiz(models.Model):
 	)
 	
 	quixID = models.IntegerField( unique = '1')
+	numberOfQuestions = models.IntegerField( default = '1')
 	created = models.DateTimeField(
 		auto_now_add=True
 	)
