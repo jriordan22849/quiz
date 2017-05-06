@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+import accounts.views
+import quiz.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^signup/',accounts.views.signup, name ="signup"),
+    url(r'^login/',accounts.views.loginUser, name ="login"),
+    url(r'^logout/',accounts.views.logoutUser, name ="logout"),
+    url(r'^quiz/',quiz.views.viewqs, name ="viewqs"),
 ]
