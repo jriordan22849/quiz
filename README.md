@@ -12,10 +12,12 @@ The challenge was to create a web application that allows a user to complete qui
 Solution
 
 The technologies that I used were to complete the challenge were:
-HTML - Front end - displaying information
-Django Templating Language - Front end - displaying information
+HTML - Front end - displaying information.
+Bootstrap - CSS.
+Django Templating Language - Front end - displaying information.
 Python - Backend - handling requests and interacting with the database.
 Ubuntu Server - Django - handle requests from the website and to host the website.
+
 
 The solution that I came up with is as follows. I developed a web application that allows users to complete quizzes online. 
 
