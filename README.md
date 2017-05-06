@@ -37,4 +37,10 @@ The database was also set up using foreign key. Each question has a foreign key 
 
 GitHub Link: https://github.com/jriordan22849/quiz/blob/master/mysite/quiz/models.py
 
-When a user completes a quiz, the answers selected by the user are sent to the server. I retrieve the questions and answers from the database relating to the quiz selected by the user. I compare the user answer to the answers in the database. In the Option model, there is a field called “rightAnswer”. This a boolean. If this boolean is True, then it is the right answer for that question. I get the user answer and a I get the object in the database. If the field “rightAnswer” is True on  object selected by the user, the user score increases by one. If the field is set to False, then 0 is added to the user score. 
+When a user completes a quiz, the answers selected by the user are sent to the server. I retrieve the questions and answers from the database relating to the quiz selected by the user. I compare the user answer to the answers in the database. In the Option model, there is a field called “rightAnswer”. This a boolean. If this boolean is True, then it is the right answer for that question. I get the user answer and a I get the object in the database. If the field “rightAnswer” is True on  object selected by the user, the user score increases by one. If the field is set to False, then 0 is added to the user score.
+
+Both the front end and the back end is dynamic. By this I mean, no matter how many questions or answers there are for a question, the infromation will be displayed and checked correctly. No parts of my code are hard coded. 
+
+Different apps were created to handle the different functionalitys within the website. The accounts app funcitonaly is handling the requests of users logging into the site, regstering and logging out of the site.
+
+The quiz app functionality is displaying the quiz to the user. Retrieving the answers selected by the user and comparing those answer to check if they are correct or not. This app also handles the funcitonality of the users score.
