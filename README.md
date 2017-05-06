@@ -12,6 +12,10 @@ The challenge was to create a web application that allows a user to complete qui
 Solution
 
 The technologies that I used were to complete the challenge were:
+HTML - Front end - displaying information
+Django Templating Language - Front end - displaying information
+Python - Backend - handling requests and interacting with the database.
+Ubuntu Server - Django - handle requests from the website and to host the website.
 
 The solution that I came up with is as follows. I developed a web application that allows users to complete quizzes online. 
 
@@ -19,8 +23,7 @@ A user can register to the site or log into the website. Once a user has logged 
 
 User authentication was also implemented, if a user is not logged into the website, the user wont have access to a quiz. If the user try to paste the quiz url into the browser the website will redirect the non logged in user to the login page.
 
-The quizzes consist of question and answers. The minimum number of questions for a quiz is one. The user can select their answer to a question by clicking on a radio button.
-
+The quizzes consist of questions and answers. The minimum number of questions for a quiz is one. The user can select their answer to a question by clicking on a radio button.
 
 The architecture of the system consists of three tiers. The first tier is the client. This consists of HTML and CSS. Its purpose is the displaying of information to the user. 
 
