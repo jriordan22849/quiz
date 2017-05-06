@@ -57,6 +57,7 @@ def completed(request):
 def compareAnswer(quiz, index, ans):
 	score = 0
 	
+		
 	print quiz
 	
 	questions = Question.objects.get(quizBelongTo=quiz, questionNumber = index)
